@@ -1,0 +1,21 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="graficoCursos"></canvas>
+
+<script>
+fetch('dados_grafico.php')
+  .then(r => r.json())
+  .then(d => {
+      new Chart(document.getElementById('graficoCursos'), {
+          type: 'bar',
+          data: {
+              labels: d.labels,
+              datasets: [{
+                  label: "Inscritos por curso",
+                  data: d.valores,
+                  backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+              }]
+          }
+      });
+  });
+</script>
